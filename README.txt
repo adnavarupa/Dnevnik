@@ -1,0 +1,1 @@
+opis projekta ide ovdje ~
