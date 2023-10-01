@@ -21,10 +21,10 @@ struct dnevnikUnos {
 void pisanjeDnevnika(vector<dnevnikUnos>& dnevnik) {
 	string unos;
 	string datum;
-
+    cout << endl;
 	cout << "Unesite datum (DD-MM-GGGG):";
 	getline(cin, datum);
-
+	
 	cout << "Mozete poceti sa pisanjem:";
 	getline(cin, unos);
 
@@ -34,28 +34,33 @@ void pisanjeDnevnika(vector<dnevnikUnos>& dnevnik) {
 
 	dnevnik.push_back(noviUnos);
 
-	cout << "Uspjesno spremljeno!";
+	cout << "\nUspjesno spremljeno!\n\n";
 }
 
 //Funkcija za pretragu unosa u dnevnik po datumu
 void pretragaPoDatumu(const vector<dnevnikUnos>& dnevnik) {
 	string datum;
+	cout << endl;
 	cout << "Unesite datum (DD-MM-GGGG):";
 	getline(cin, datum);
+	int brojac = 1;
 
 	cout << "Unosi za " << datum << ":" << endl;
 	bool pronadjen = false;
 
 	for (const dnevnikUnos& unos : dnevnik) {
+		cout << endl;
 		if (unos.datum == datum) {
-			cout << unos.unos << endl;
+			cout << "Unos " << brojac << ": \"" << unos.unos << "\"" << endl;
 			pronadjen = true;
+			brojac + 1;
 		}
 	}
 
 	if (!pronadjen) {
 		cout << "Nema unosa u dnevnik za taj datum.";
 	}
+	cout << endl;
 }
 
 int main(){
@@ -76,9 +81,10 @@ int main(){
 
 	int izbor;
 	do {
-		cout << "Meni:\n1. Pisanje dnevnika\n2. Pretraga po datumu\n3. Kraj";
+		cout << "Meni:\n1. Pisanje dnevnika\n2. Pretraga po datumu\n3. Kraj\n\n";
+		cout << "Unesite izbor:";
 		cin >> izbor;
-
+		cin.ignore();
 		switch (izbor) {
 		case 1:
 			pisanjeDnevnika(dnevnik);
