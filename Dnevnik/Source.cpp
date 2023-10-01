@@ -64,7 +64,6 @@ void pretragaPoDatumu(const vector<dnevnikUnos>& dnevnik) {
 }
 
 int main(){
-	vector<dnevnikUnos> dnevnik;
 	
 	cout << "                         ,..........   ..........," << endl;
 	cout << "                     ,..,'          '.'          ',..," << endl;
@@ -76,11 +75,25 @@ int main(){
 	cout << "                 '''''''''''''''''';''';''''''''''''''''''" << endl;
 	cout << "                                    '''" << endl;
 	
-	
-
-
+	vector<dnevnikUnos> dnevnik;
 	int izbor;
+	string password;
+	string trazeniPassword;
+	
+	//Korisnik mora napraviti password
+	cout << "Kreirajte password:";
+	getline(cin, password);
+	cout << endl;
+
 	do {
+
+		//Korisnik mora unijeti tacan password da bi pristupio opcijama
+		do {
+			cout << "Unesite password:";
+			getline(cin, trazeniPassword);
+		} while (trazeniPassword != password); 
+
+		cout << endl;
 		cout << "Meni:\n1. Pisanje dnevnika\n2. Pretraga po datumu\n3. Kraj\n\n";
 		cout << "Unesite izbor:";
 		cin >> izbor;
