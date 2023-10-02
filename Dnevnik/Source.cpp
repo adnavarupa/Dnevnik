@@ -175,6 +175,34 @@ void ispisSadrzajaDatoteke() {
     datoteka.close();
 }
 
+// Funkcija za brisanje unosa
+void obrisiUnos(vector<dnevnikUnos>& dnevnik) {
+    string datum;
+    cout << "Unesite datum unosa koji zelite obrisati (DD-MM-GGGG): ";
+    getline(cin, datum);
+
+    bool obrisan = false;
+
+    for (int i = 0; i < dnevnik.size(); ) {
+        if (dnevnik[i].datum == datum) {
+            dnevnik.erase(dnevnik.begin() + i);
+            obrisan = true;
+        }
+        else {
+            ++i;
+        }
+    }
+
+    if (obrisan) {
+        cout << "Unos(i) uspjesno obrisan(i)!" << endl;
+    }
+    else {
+        cout << "Nema unosa za taj datum." << endl;
+    }
+}
+
+
+
 int main() {
 
     ucitajKorisnika(korisnici); //Ucita korisnike prije pocetka programa
@@ -220,7 +248,7 @@ int main() {
 
     do {
         cout << "Meni:\n1. Pisanje dnevnika\n2. Pretraga po datumu\n3. Ispis svih unosa\n4."
-                " Spremanje u datoteku\n5. Ispis sadrzaja datoteka\n6. Promjena profila\n7. Kraj\n\n";
+                " Spremanje u datoteku\n5. Ispis sadrzaja datoteka\n6. Brisanje unosa\n7. Promjena profila\n8. Kraj\n\n";
         cout << "Unesite izbor:";
         cin >> izborB;
 
@@ -245,6 +273,10 @@ int main() {
                 break;
 
             case 6:
+                obrisiUnos(dnevnik);
+                break;
+
+            case 7:
                 cout << endl;
                 do {
                     cout << "1. Registracija\n2. Prijava\n\nIzbor:";
@@ -268,11 +300,11 @@ int main() {
                 } while (izborA != 2);
                 break;
 
-            case 7:
+            case 8:
                 spremanjeKorisnikaUdatoteku(korisnici); //Sprema korisnike prije izlaska iz programa
                 cout << "Dovidjenja!";
                 break;
         }
-    } while (izborB != 7);
+    } while (izborB != 8);
 
 }
