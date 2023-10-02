@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/hp/CLionProjects/untitled11/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/hp/Desktop/Dnevnik/Dnevnik-fix/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target untitled11
 
@@ -49,7 +49,7 @@ cmake_ninja_workdir = C$:/Users/hp/CLionProjects/untitled11/cmake-build-debug/
 
 build cmake_object_order_depends_target_untitled11: phony || CMakeFiles/untitled11.dir
 
-build CMakeFiles/untitled11.dir/main.cpp.obj: CXX_COMPILER__untitled11_Debug C$:/Users/hp/CLionProjects/untitled11/main.cpp || cmake_object_order_depends_target_untitled11
+build CMakeFiles/untitled11.dir/main.cpp.obj: CXX_COMPILER__untitled11_Debug C$:/Users/hp/Desktop/Dnevnik/Dnevnik-fix/main.cpp || cmake_object_order_depends_target_untitled11
   DEP_FILE = CMakeFiles\untitled11.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\untitled11.dir
@@ -74,77 +74,44 @@ build untitled11.exe: CXX_EXECUTABLE_LINKER__untitled11_Debug CMakeFiles/untitle
   TARGET_PDB = untitled11.exe.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target 1
+# Object build statements for EXECUTABLE target Source
 
 
 #############################################
-# Order-only phony target for 1
+# Order-only phony target for Source
 
-build cmake_object_order_depends_target_1: phony || CMakeFiles/1.dir
+build cmake_object_order_depends_target_Source: phony || CMakeFiles/Source.dir
 
-build CMakeFiles/1.dir/1.cpp.obj: CXX_COMPILER__1_Debug C$:/Users/hp/CLionProjects/untitled11/1.cpp || cmake_object_order_depends_target_1
-  DEP_FILE = CMakeFiles\1.dir\1.cpp.obj.d
+build CMakeFiles/Source.dir/Source.cpp.obj: CXX_COMPILER__Source_Debug C$:/Users/hp/Desktop/Dnevnik/Dnevnik-fix/Source.cpp || cmake_object_order_depends_target_Source
+  DEP_FILE = CMakeFiles\Source.dir\Source.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  OBJECT_DIR = CMakeFiles\1.dir
-  OBJECT_FILE_DIR = CMakeFiles\1.dir
+  OBJECT_DIR = CMakeFiles\Source.dir
+  OBJECT_FILE_DIR = CMakeFiles\Source.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target 1
+# Link build statements for EXECUTABLE target Source
 
 
 #############################################
-# Link the executable 1.exe
+# Link the executable Source.exe
 
-build 1.exe: CXX_EXECUTABLE_LINKER__1_Debug CMakeFiles/1.dir/1.cpp.obj
+build Source.exe: CXX_EXECUTABLE_LINKER__Source_Debug CMakeFiles/Source.dir/Source.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\1.dir
+  OBJECT_DIR = CMakeFiles\Source.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = 1.exe
-  TARGET_IMPLIB = lib1.dll.a
-  TARGET_PDB = 1.exe.dbg
-
-# =============================================================================
-# Object build statements for EXECUTABLE target 2
-
-
-#############################################
-# Order-only phony target for 2
-
-build cmake_object_order_depends_target_2: phony || CMakeFiles/2.dir
-
-build CMakeFiles/2.dir/2.cpp.obj: CXX_COMPILER__2_Debug C$:/Users/hp/CLionProjects/untitled11/2.cpp || cmake_object_order_depends_target_2
-  DEP_FILE = CMakeFiles\2.dir\2.cpp.obj.d
-  FLAGS = -g -std=gnu++14
-  OBJECT_DIR = CMakeFiles\2.dir
-  OBJECT_FILE_DIR = CMakeFiles\2.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target 2
-
-
-#############################################
-# Link the executable 2.exe
-
-build 2.exe: CXX_EXECUTABLE_LINKER__2_Debug CMakeFiles/2.dir/2.cpp.obj
-  FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\2.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = 2.exe
-  TARGET_IMPLIB = lib2.dll.a
-  TARGET_PDB = 2.exe.dbg
+  TARGET_FILE = Source.exe
+  TARGET_IMPLIB = libSource.dll.a
+  TARGET_PDB = Source.exe.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\hp\CLionProjects\untitled11\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\hp\Desktop\Dnevnik\Dnevnik-fix\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -155,7 +122,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\hp\CLionProjects\untitled11\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\hp\CLionProjects\untitled11 -BC:\Users\hp\CLionProjects\untitled11\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D C:\Users\hp\Desktop\Dnevnik\Dnevnik-fix\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\hp\Desktop\Dnevnik\Dnevnik-fix -BC:\Users\hp\Desktop\Dnevnik\Dnevnik-fix\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -165,9 +132,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build 1: phony 1.exe
-
-build 2: phony 2.exe
+build Source: phony Source.exe
 
 build untitled11: phony untitled11.exe
 
@@ -177,9 +142,9 @@ build untitled11: phony untitled11.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/hp/CLionProjects/untitled11/cmake-build-debug
+# Folder: C:/Users/hp/Desktop/Dnevnik/Dnevnik-fix/cmake-build-debug
 
-build all: phony untitled11.exe 1.exe 2.exe
+build all: phony untitled11.exe Source.exe
 
 # =============================================================================
 # Built-in targets

@@ -12,7 +12,7 @@ struct Korisnik {
     bool prijavljen;
 
     Korisnik(const string& user, const string& password)
-        : user(user), password(password), prijavljen(false) {}
+            : user(user), password(password), prijavljen(false) {}
 };
 
 vector<Korisnik> korisnici;
@@ -58,7 +58,33 @@ Korisnik* prijavaKorisnika() {
     return nullptr;
 }
 
+//Funkcija za spremanje korisnika u datoteku
+void spremanjeKorisnikaUdatoteku(const vector<Korisnik>& korisnici) {
+    ofstream datoteka("korisnici.txt");
+    if (!datoteka.is_open()) {
+        cout << "Nemoguce otvoriti datoteku za cuvanje korisnika!" << endl;
+        return;
+    }
+    for (const Korisnik& korisnik : korisnici) {
+        datoteka << korisnik.user << " " << korisnik.password << endl;
+    }
+    datoteka.close();
+}
 
+//Funkcija za ucitavanje korisnika iz datoteke
+void ucitajKorisnika(vector<Korisnik>& korisnici) {
+    ifstream datoteka("korisnici.txt");
+    if (!datoteka.is_open()) {
+        cout << "Nemoguce otvoriti datoteku za citanje korisnika!" << endl;
+        return;
+    }
+    korisnici.clear(); //Obrisati postojecu listu korisnika
+    string user, password;
+    while (datoteka >> user >> password) {
+        korisnici.push_back({user,password});
+    }
+    datoteka.close();
+}
 
 //Funkcija za pisanje dnevnika
 void pisanjeDnevnika(vector<dnevnikUnos>& dnevnik, const string& username) {
@@ -107,7 +133,7 @@ void pretragaPoDatumu(const vector<dnevnikUnos>& dnevnik, const string& trenutni
     cout << endl;
 }
 
-//Funkcija za ispisivanje svih unosa u dnevnik za trenutnog korisnika 
+//Funkcija za ispisivanje svih unosa u dnevnik za trenutnog korisnika
 void ispisUnosa(const vector<dnevnikUnos>& dnevnik, const string& trenutniKorisnik) {
     cout << endl;
     for (const dnevnikUnos& unos : dnevnik) {
@@ -151,6 +177,8 @@ void ispisSadrzajaDatoteke() {
 
 int main() {
 
+    ucitajKorisnika(korisnici); //Ucita korisnike prije pocetka programa
+
     cout << "                         ,..........   ..........," << endl;
     cout << "                     ,..,'          '.'          ',..," << endl;
     cout << "                    ,' ,'            :            ', '," << endl;
@@ -161,19 +189,19 @@ int main() {
     cout << "                 '''''''''''''''''';''';''''''''''''''''''" << endl;
     cout << "                                    '''" << endl;
 
-    vector<dnevnikUnos> dnevnik;
+    vector <dnevnikUnos> dnevnik;
 
     string password;
     string trazeniPassword;
-    Korisnik* trenutniKorisnik = nullptr;
+    Korisnik *trenutniKorisnik = nullptr;
     int izborA;
     int izborB;
     cout << endl;
-    do{
-            cout << "Dobrodosli u program Dnevnik!\n\n1. Registracija\n2. Prijava\n\nIzbor:";
-            cin >> izborA;
-            cin.ignore();
-            switch (izborA) {
+    do {
+        cout << "Dobrodosli u program Dnevnik!\n\n1. Registracija\n2. Prijava\n\nIzbor:";
+        cin >> izborA;
+        cin.ignore();
+        switch (izborA) {
             case 1:
                 cout << endl;
                 registracijaKorisnika();
@@ -187,62 +215,63 @@ int main() {
                 }
                 cout << endl;
                 break;
-            }
+        }
     } while (izborA != 2);
 
-    do{
+    do {
         cout << "Meni:\n1. Pisanje dnevnika\n2. Pretraga po datumu\n3. Ispis svih unosa\n4."
-            " Spremanje u datoteku\n5. Ispis sadrzaja datoteka\n6. Promjena profila\n7. Kraj\n\n";
+                " Spremanje u datoteku\n5. Ispis sadrzaja datoteka\n6. Promjena profila\n7. Kraj\n\n";
         cout << "Unesite izbor:";
         cin >> izborB;
 
         cin.ignore();
         switch (izborB) {
-        case 1:
-            pisanjeDnevnika(dnevnik, trenutniKorisnik->user);
-            break;
-        case 2:
-            pretragaPoDatumu(dnevnik, trenutniKorisnik->user);
-            break;
-        case 3:
-            ispisUnosa(dnevnik, trenutniKorisnik->user);
-            break;
+            case 1:
+                pisanjeDnevnika(dnevnik, trenutniKorisnik->user);
+                break;
+            case 2:
+                pretragaPoDatumu(dnevnik, trenutniKorisnik->user);
+                break;
+            case 3:
+                ispisUnosa(dnevnik, trenutniKorisnik->user);
+                break;
 
-        case 4:
-            spremanjeUdatoteku(dnevnik);
-            break;
+            case 4:
+                spremanjeUdatoteku(dnevnik);
+                break;
 
-        case 5:
-            ispisSadrzajaDatoteke();
-            break;
+            case 5:
+                ispisSadrzajaDatoteke();
+                break;
 
-        case 6:
-            cout << endl;
-            do {
-                cout << "1. Registracija\n2. Prijava\n\nIzbor:";
-                cin >> izborA;
-                cin.ignore();
-                switch (izborA) {
-                case 1:
-                    cout << endl;
-                    registracijaKorisnika();
-                    cout << endl;
-                    break;
-                case 2:
-                    cout << endl;
-                    trenutniKorisnik = prijavaKorisnika();
-                    if (trenutniKorisnik) {
-                        cout << "Prijavljeni ste kao " << trenutniKorisnik->user << "." << endl;
+            case 6:
+                cout << endl;
+                do {
+                    cout << "1. Registracija\n2. Prijava\n\nIzbor:";
+                    cin >> izborA;
+                    cin.ignore();
+                    switch (izborA) {
+                        case 1:
+                            cout << endl;
+                            registracijaKorisnika();
+                            cout << endl;
+                            break;
+                        case 2:
+                            cout << endl;
+                            trenutniKorisnik = prijavaKorisnika();
+                            if (trenutniKorisnik) {
+                                cout << "Prijavljeni ste kao " << trenutniKorisnik->user << "." << endl;
+                            }
+                            cout << endl;
+                            break;
                     }
-                    cout << endl;
-                    break;
-                }
-            } while (izborA != 2);
-            break;
+                } while (izborA != 2);
+                break;
 
-        case 7:
-            cout << "Dovidjenja!";
-            break;
+            case 7:
+                spremanjeKorisnikaUdatoteku(korisnici); //Sprema korisnike prije izlaska iz programa
+                cout << "Dovidjenja!";
+                break;
         }
     } while (izborB != 7);
 
