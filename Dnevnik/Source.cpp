@@ -4,12 +4,51 @@
 
 using namespace std;
 
-//Funkcija za autentifikaciju korisnka
-/*bool autentifikacijaKorisnika() {
-	string ime;
-	string password;
+//Pravljenje korisnickog naloga
+struct Korisnik {
+    string user;
+    string password;
+    bool prijavljen;
 
-}*/
+    Korisnik(const string& user, const string& password)
+        : user(user), password(password), prijavljen(false) {}
+};
+
+vector<Korisnik> korisnici;
+
+//Funkcija za registraciju korisnika
+void registracijaKorisnika() {
+	string user, password;
+	cout << "Unesite korisnicko ime: ";
+	cin >> user;
+	for (const Korisnik& korisnik : korisnici) { //Provjerava da li korisnicko ime vec postoji
+		if (korisnik.user == user) {
+			cout << "Korisnicko ime vec postoji. Izaberite drugo." << endl;
+			return;
+		}
+	}
+	cout << "Unesite lozinku: ";
+	cin >> password;
+	korisnici.push_back({user,password});
+	cout << "Registracija uspjesna!" << endl;
+}
+
+//Funkcija za prijavu korisnika
+Korisnik* prijavaKorisnika() {
+	string user, password;
+	cout << "Unesite korisnicko ime: ";
+	cin >> user;
+	cout << "Unesite lozinku: ";
+	cin >> password;
+	for (Korisnik& korisnik : korisnici) {
+		if (korisnik.user == user && korisnik.password == password) {
+			korisnik.prijavljen = true;
+			return &korisnik;
+		}
+	}
+	cout << "Pogresno korisnicko ime ili lozinka!" << endl;
+	return nullptr;
+}
 
 //Struct za unos u dnevnk
 struct dnevnikUnos {
@@ -99,15 +138,24 @@ int main(){
 		cin >> izbor;
 		cin.ignore();
 		switch (izbor) {
-		case 1:
+			case 1:
+			registracijaKorisnika();
+			break;
+			case 2:
+			Korisnik* trenutniKorisnik = prijavaKorisnika();
+			if (trenutniKorisnik) {
+				cout << "Prijavljeni ste kao " << trenutniKorisnik -> user << "." << endl;
+			}
+			break;
+		case 3:
 			pisanjeDnevnika(dnevnik);
 			break;
 
-		case 2:
+		case 4:
 			pretragaPoDatumu(dnevnik);
 			break;
 
-		case 3:
+		case 5:
 			cout << "Dovidjenja!";
 			break;
 		}
