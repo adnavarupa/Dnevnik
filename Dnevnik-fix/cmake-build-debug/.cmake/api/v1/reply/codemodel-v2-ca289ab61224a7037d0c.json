@@ -16,8 +16,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						1,
-						2
+						1
 					]
 				}
 			],
@@ -33,8 +32,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						1,
-						2
+						1
 					]
 				}
 			],
@@ -42,16 +40,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-1-Debug-856e23ebcc612477b492.json",
-					"name" : "1",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
-					"id" : "2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-2-Debug-f39e60dbe0a22ba6d758.json",
-					"name" : "2",
+					"id" : "Source::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Source-Debug-ab84e3292e8121cd64e5.json",
+					"name" : "Source",
 					"projectIndex" : 0
 				},
 				{
@@ -67,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/hp/CLionProjects/untitled11/cmake-build-debug",
-		"source" : "C:/Users/hp/CLionProjects/untitled11"
+		"build" : "C:/Users/hp/Desktop/Dnevnik/Dnevnik-fix/cmake-build-debug",
+		"source" : "C:/Users/hp/Desktop/Dnevnik/Dnevnik-fix"
 	},
 	"version" : 
 	{

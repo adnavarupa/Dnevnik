@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/hp/CLionProjects/untitled11/cmake-build-debug"
+			"value" : "c:/Users/hp/Desktop/Dnevnik/Dnevnik-fix/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -623,7 +623,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/hp/CLionProjects/untitled11"
+			"value" : "C:/Users/hp/Desktop/Dnevnik/Dnevnik-fix"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1239,7 +1239,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/hp/CLionProjects/untitled11/cmake-build-debug"
+			"value" : "C:/Users/hp/Desktop/Dnevnik/Dnevnik-fix/cmake-build-debug"
 		},
 		{
 			"name" : "untitled11_IS_TOP_LEVEL",
@@ -1263,7 +1263,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/hp/CLionProjects/untitled11"
+			"value" : "C:/Users/hp/Desktop/Dnevnik/Dnevnik-fix"
 		}
 	],
 	"kind" : "cache",
