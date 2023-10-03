@@ -178,6 +178,91 @@ void ispisSadrzajaDatoteke() {
     datoteka.close();
 }
 
+// Funkcija za brisanje unosa
+void obrisiUnos(vector<dnevnikUnos>& dnevnik) {
+    string datum;
+    cout << "Unesite datum unosa koji zelite obrisati (DD-MM-GGGG): ";
+    getline(cin, datum);
+
+    bool obrisan = false;
+
+    for (int i = 0; i < dnevnik.size(); ) {
+        if (dnevnik[i].datum == datum) {
+            dnevnik.erase(dnevnik.begin() + i);
+            obrisan = true;
+        }
+        else {
+            ++i;
+        }
+    }
+
+    if (obrisan) {
+        cout << "Unos(i) uspjesno obrisan(i)!" << endl;
+    }
+    else {
+        cout << "Nema unosa za taj datum." << endl;
+    }
+}
+
+//Funkcija za uredjivanje sadrzaja u dnevniku
+void urediUnosUdnevnik() {
+    string nazivDatoteke = "dnevnik.txt";
+    ifstream datoteka(nazivDatoteke);
+    if (!datoteka.is_open()) {
+        cout << "Nemoguce otvoriti datoteku za uredjivanje sadrzaja." << endl;
+        return;
+    }
+
+    vector<string> sadrzajDatoteke;
+    string linija;
+
+    // Ucitaj sadrzaj datoteke u vektor
+    while (getline(datoteka, linija)) {
+        sadrzajDatoteke.push_back(linija);
+    }
+
+    datoteka.close();
+
+    // Ispis sadrzaja datoteke
+    cout << "Trenutni sadrzaj datoteke '" << nazivDatoteke << "':" << endl;
+    for (int i = 0; i < sadrzajDatoteke.size(); i++) {
+        cout << i + 1 << ". " << sadrzajDatoteke[i] << endl;
+    }
+
+    // Unesite redni broj unosa za uredjivanje
+    int brojUnosa;
+    cout << "Unesite redni broj unosa koji zelite urediti (0 za izlaz): ";
+    cin >> brojUnosa;
+    cin.ignore();
+
+    if (brojUnosa == 0 || brojUnosa > sadrzajDatoteke.size()) {
+        cout << "Nevazeci broj unosa." << endl;
+        return;
+    }
+
+    // Unesite novi sadrzaj
+    cout << "Unesite novi sadrzaj za unos " << brojUnosa << " (pritisnite Enter za zavrsetak unosa):" << endl;
+    string noviSadrzaj;
+    getline(cin, noviSadrzaj);
+
+    // Ažurirajte sadržaj u vektoru
+    sadrzajDatoteke[brojUnosa - 1] = noviSadrzaj;
+
+    // Otvorite datoteku za pisanje i ažurirajte sadržaj
+    ofstream izlaznaDatoteka(nazivDatoteke);
+    if (!izlaznaDatoteka.is_open()) {
+        cout << "Nemoguce otvoriti datoteku za spremanje sadrzaja." << endl;
+        return;
+    }
+
+    for (const string& novaLinija : sadrzajDatoteke) {
+        izlaznaDatoteka << novaLinija << endl;
+    }
+
+    izlaznaDatoteka.close();
+    cout << "Sadrzaj datoteke '" << nazivDatoteke << "' je uspjesno azuriran." << endl;
+}
+
 int main() {
 
     ucitajKorisnika(korisnici); //Ucita korisnike prije pocetka programa
@@ -223,7 +308,8 @@ int main() {
 
     do {
         cout << "Meni:\n1. Pisanje dnevnika\n2. Pretraga po datumu\n3. Ispis svih unosa\n4."
-                " Spremanje u datoteku\n5. Ispis sadrzaja datoteka\n6. Promjena profila\n7. Kraj\n\n";
+                " Spremanje u datoteku\n5. Ispis sadrzaja datoteka\n6. Brisanje unosa\n7. Promjena profila\n"
+                "8. Uredjivanje sadrzaja\n 9. Kraj\n\n";
         cout << "Unesite izbor:";
         cin >> izborB;
 
@@ -248,6 +334,10 @@ int main() {
                 break;
 
             case 6:
+                obrisiUnos(dnevnik);
+                break;
+
+            case 7:
                 cout << endl;
                 do {
                     cout << "1. Registracija\n2. Prijava\n\nIzbor:";
@@ -271,11 +361,15 @@ int main() {
                 } while (izborA != 2);
                 break;
 
-            case 7:
+            case 8:
+                urediUnosUdnevnik();
+                break;
+
+            case 9:
                 spremanjeKorisnikaUdatoteku(korisnici); //Sprema korisnike prije izlaska iz programa
                 cout << "Dovidjenja!";
                 break;
         }
-    } while (izborB != 7);
+    } while (izborB != 9);
 
 }
